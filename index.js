@@ -7,6 +7,15 @@
  * Повертає - foundElement - перший елемент масиву, який є більшим за задане число
  */
 function findElementGreaterThan(arr, num) {
+  if (!Array.isArray(arr)) {
+    return undefined;
+  }
+  let foundElement = arr.find((element) => element > num);
+  if (foundElement) {
+    return foundElement;
+  } else {
+    return `Числа яке задовільняе умову не знайдено.`;
+  }
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо undefined
   // повертаємо undefined
   // Використовуємо метод find для пошуку першого елементу, який є більшим за задане число num.
@@ -28,6 +37,11 @@ console.log(findElementGreaterThan([1, 2, 3, 4, 5], 3)); // Виведе 4
  * Якщо об'єкт не знайдено, повертає -1.
  */
 function findIndexByProperty(arr, name) {
+  if (!Array.isArray(arr)) {
+    return -1;
+  }
+  let foundIndex = arr.findIndex((element) => element.name === name);
+  return foundIndex >= 0 ? foundIndex : "Об`єкта з таким іменем не знайдено";
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо -1
   // Використовуємо метод findIndex для пошуку індексу об'єкта, властивість 'name' якого співпадає з заданим іменем.
   // Повертаємо знайдений індекс або -1, якщо об'єкт не знайдено.
@@ -54,6 +68,13 @@ console.log(
  * Якщо таке число не знайдено, повертає 'Парних чисел не знайдено'.
  */
 function findLastEvenNumber(arr) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  let lastEvenNumber = arr.findLast((num) => num % 2 === 0);
+  return lastEvenNumber !== undefined
+    ? lastEvenNumber
+    : "Парних чисел не знайдено";
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою метода findLast знаходимо останнє парне число в масиві.
   // Повертаємо знайдене число або 'Парних чисел не знайдено', якщо таке число не знайдено.
@@ -72,6 +93,13 @@ console.log(findLastEvenNumber([1, 2, 3, 4, 5])); // Виведе 4
  * Повертає - subArrayString - рядок, отриманий в результаті конвертації підмасиву.
  */
 function getSubArrayAndConvertToString(arr, startIdx) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const subArray = arr.slice(startIdx);
+  const subArrayString = subArray.join("");
+  return subArrayString;
+
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу slice() отримуємо підмасив від заданого індексу до кінця масиву.
   // За допомогою методу join() конвертуємо підмасив в рядок.
@@ -96,6 +124,12 @@ console.log(
  * Повертає - arrayKeys - масив ключів вхідного масиву.
  */
 function getArrayKeys(arr) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const arrayKeysIterator = arr.keys();
+  const arrayKeys = Array.from(arrayKeysIterator);
+  return arrayKeys;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу keys() отримуємо об'єкт ітератора, який містить ключі масиву.
   // Конвертуємо ітератор в масив за допомогою методу from.
@@ -114,6 +148,14 @@ console.log(getArrayKeys(["яблуко", "банан", "апельсин"])); /
  * Повертає - positiveArrayValues - масив додатніх значень вхідного масиву.
  */
 function getPositiveArrayValues(arr) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const arrayValuesIterator = arr.values();
+  const arrayValues = Array.from(arrayValuesIterator);
+  const positiveArrayValues = arrayValues.filter((value) => value > 0);
+  return positiveArrayValues;
+
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу values() отримуємо об'єкт ітератора, який містить значення масиву.
   // Конвертуємо ітератор в масив.
@@ -134,6 +176,13 @@ console.log(getPositiveArrayValues([-2, -1, 0, 1, 2])); // Виведе [1, 2]
  * Повертає - doubledArray - масив подвоєних елементів після видалення.
  */
 function removeAndDouble(arr, startIdx) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  arr.splice(startIdx);
+  const doubledArray = arr.map((elem) => elem * 2);
+
+  return doubledArray;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу splice() видаляємо елементи масиву починаючи з заданого індексу.
   // За допомогою методу map() подвоюємо кожен елемент масиву.
@@ -152,6 +201,15 @@ console.log(removeAndDouble([1, 2, 3, 4, 5], 2)); // Виведе [ 2, 4 ]
  * Повертає - sum - сума елементів масиву.
  */
 function sumAndPrint(arr) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const sum = arr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+  arr.forEach((element) => console.log(element));
+  return sum;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу reduce() обчислюємо суму елементів масиву.
   // За допомогою методу forEach() виводимо кожен елемент масиву в консоль.
@@ -177,6 +235,15 @@ console.log(sumAndPrint([1, 2, 3, 4, 5])); // Виведе
  * Повертає - filteredSquaredArray - вирівняний масив, елементи якого підняті до квадрату і профільтровані.
  */
 function flattenSquareAndFilter(arr, threshold) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const flatArray = arr.flat();
+  const squaredArray = flatArray.map((element) => element * element);
+  const filteredSquaredArray = squaredArray.filter(
+    (element) => element > threshold
+  );
+  return filteredSquaredArray;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу flat() вирівнюємо масив.
   // За допомогою методу map() підносимо кожен елемент масиву до квадрату.
@@ -206,6 +273,16 @@ console.log(
  * Повертає - sum - сума останніх n елементів масиву.
  */
 function getLastElementsSumAndPrint(arr, n) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const lastElements = arr.slice(-n);
+  const sum = lastElements.reduceRight(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
+  lastElements.forEach((element) => console.log(element));
+  return sum;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні повертаємо 'Вхідний параметр має бути масивом'
   // За допомогою методу slice() вибираємо останні n елементів масиву.
   // За допомогою методу reduceRight() обчислюємо суму останніх n елементів масиву.
@@ -227,6 +304,11 @@ console.log(getLastElementsSumAndPrint([1, 2, 3, 4, 5], 2)); // Виведе
  * Повертає - lengthsArray - новий масив, де кожний елемент - це довжина відповідного слова з вхідного масиву.
  */
 function wordLengths(arr) {
+  if (!Array.isArray(arr)) {
+    return "Вхідний параметр має бути масивом";
+  }
+  const lengthsArray = arr.map((word) => word.length);
+  return lengthsArray;
   // Перевіряємо, чи вхідний параметр є масивом, якщо ні, повертаємо 'Вхідний параметр має бути масивом'
   // Використовуємо метод map для створення нового масиву, де кожний елемент - це довжина відповідного слова з вхідного масиву
   // Повертаємо новий масив
